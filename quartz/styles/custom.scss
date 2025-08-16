@@ -1,0 +1,520 @@
+@use "./base.scss";
+
+
+.toc {
+    font-size: 0.8em; /* this adjusts the font size of the Table of Contents on the right pane */
+}
+
+
+/* Music Player CSS */
+/*##################################################################*/
+.music-player {
+  
+  
+  h3 {
+    margin-bottom: 0.5rem;
+    //font-size: 0.9rem;
+    //color: var(--dark);       /* Uses theme colors */
+    text-align: center;       /* Centers the title */
+    //font-weight: 600;         /* Makes it slightly bolder */
+  }
+  
+  iframe {
+    border-radius: 8px;
+    border: 3px solid var(--lightgray); /* Adds a border */
+    width: 100%;
+    //height: 250px;            /* Fixed height instead of 300 */
+  }
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+  .music-player {
+    padding: 0.5rem;
+    
+    iframe {
+      height: 100px;          /* Smaller on mobile */
+    }
+  }
+}
+/*##################################################################*/
+
+
+
+
+/* Adjusting the left sidebar */
+
+/* Move left sidebar higher up and reduce spacing */
+.left {
+  padding-top: 2.5rem !important;  /* Reduce top padding - adjust as needed */
+}
+
+
+
+
+/* Custom image container */
+.centered-image {
+  text-align: center;
+  background-color: black;
+  //padding: 10px;
+  //margin: 50px 0;
+}
+
+.centered-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Homepage CSS */
+/*##################################################################*/
+
+/* Disable Obsidian hover previews on homepage */
+body:has(.homepage-container) .popover {
+  display: none !important;
+}
+
+/* Hide everything on index page and create full-screen container */
+body:has(.homepage-container) .page-header,
+body:has(.homepage-container) .page-footer,
+body:has(.homepage-container) .left-sidebar,
+body:has(.homepage-container) .right-sidebar,
+body:has(.homepage-container) .page-title,
+body:has(.homepage-container) .page-listing,
+body:has(.homepage-container) .content-meta,
+body:has(.homepage-container) h1 {
+  display: none !important;
+}
+
+/* Show darkmode component when inside homepage container */
+body:has(.homepage-container) .homepage-darkmode {
+  display: block !important;
+}
+
+body:has(.homepage-container) .center {
+  max-width: 100vw !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body:has(.homepage-container) .page-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body:has(.homepage-container) {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Futuristic Homepage Styling */
+.homepage-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+  gap: 10px;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .homepage-container {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+/* Subtle animated background grid */
+.homepage-container::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  right: -100px;
+  bottom: -100px;
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 10s linear infinite;
+  z-index: -1;
+}
+
+[data-theme="dark"] .homepage-container::before {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.043) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.043) 1px, transparent 1px);
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Chapter Menu Container */
+.chapter-menu {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Central button - larger and cleaner */
+.start-button {
+  position: relative;
+  z-index: 3;
+  padding: 16px 32px !important; 
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #333;
+  text-decoration: none;
+  font-family: "Oxanium", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+
+[data-theme="dark"] .start-button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:hover,
+.chapter-menu:hover .start-button {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--tertiary);
+}
+
+[data-theme="dark"] .start-button:hover,
+[data-theme="dark"] .chapter-menu:hover .start-button {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--tertiary);
+}
+
+/* Glowing effect */
+.start-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.start-button:hover::after,
+.chapter-menu:hover .start-button::after {
+  opacity: 1;
+}
+
+/* Chapter Options Container */
+.chapter-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+/* Show chapter options on hover with delay */
+.chapter-menu:hover .chapter-options {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0.5s;
+}
+
+/* Reset delay when not hovering */
+.chapter-menu .chapter-options {
+  transition-delay: 0.1s;
+}
+
+/* Individual chapter buttons */
+.chapter-button {
+  position: relative;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #555;
+  text-decoration: none;
+  font-family: "Oxanium", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  width: 280px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .chapter-button {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ccc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chapter-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--tertiary);
+}
+
+[data-theme="dark"] .chapter-button:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--tertiary);
+}
+
+/* Subtle glow on chapter button hover */
+.chapter-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chapter-button:hover::before {
+  opacity: 1;
+}
+
+/* Corner X icons */
+.corner-icon {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  z-index: 100;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Make bottom-right corner icon slightly more prominent for easter egg */
+.corner-icon.bottom-right {
+  opacity: 0.8;
+}
+
+.corner-icon.bottom-right:hover {
+  opacity: 0.5;
+  transform: translate(-6px, -6px) scale(1.1);
+}
+
+/* Aggressively remove any focus/active/visited states that might show boxes */
+.corner-icon:focus,
+.corner-icon:active,
+.corner-icon:visited,
+.corner-icon:link {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  text-decoration: none !important;
+}
+
+/* Make any remaining box extremely transparent */
+.corner-icon::before,
+.corner-icon::after {
+  display: none !important;
+}
+
+/* Override any Quartz link styling specifically for corner icons */
+body:has(.homepage-container) a.corner-icon {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: rgba(67, 82, 103, 0.037) !important; /* Nearly invisible */
+}
+
+.corner-icon:hover {
+  opacity: 0.4;
+}
+
+.corner-icon.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.corner-icon.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.corner-icon.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.corner-icon.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Responsive corner movement on hover */
+.corner-icon.top-left:hover {
+  transform: translate(6px, 6px);
+}
+
+.corner-icon.top-right:hover {
+  transform: translate(-6px, 6px);
+}
+
+.corner-icon.bottom-left:hover {
+  transform: translate(6px, -6px);
+}
+
+.corner-icon.bottom-right:hover {
+  transform: translate(-6px, -6px);
+}
+
+/* Dark mode adjustments for corners */
+[data-theme="dark"] .corner-icon {
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .corner-icon:hover {
+  opacity: 0.2;
+}
+
+/* Dark Mode Toggle Button for Homepage */
+.homepage-darkmode-toggle {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  color: #333;
+}
+
+[data-theme="dark"] .homepage-darkmode-toggle {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.homepage-darkmode-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(-50%) scale(1.1);
+}
+
+[data-theme="dark"] .homepage-darkmode-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Show/hide icons based on theme */
+.homepage-darkmode-toggle .sun-icon {
+  display: none;
+}
+
+.homepage-darkmode-toggle .moon-icon {
+  display: block;
+}
+
+[data-theme="dark"] .homepage-darkmode-toggle .sun-icon {
+  display: block;
+}
+
+[data-theme="dark"] .homepage-darkmode-toggle .moon-icon {
+  display: none;
+}
+
+/* Greeting styles */
+#greeting {
+  position: relative;
+  z-index: 2;
+  font-size: 1.2em;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  color: #333;
+  font-family: "Oxanium", sans-serif;
+}
+
+[data-theme="dark"] #greeting {
+  color: #fff;
+}

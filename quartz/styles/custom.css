@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Comfortaa:wght@300..700&display=swap');
+
+/* Scale all fonts by 20% */
+html {
+  font-size: 120%;
+}
+
+/* Body text font */
+body, p, li, td, th, .content {
+  font-family: 'Comfortaa', sans-serif;
+}
+
+/* Headings font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oxanium', sans-serif;
+}
+
+/* Custom colors for emphasis */
+em, i {
+  color: var(--secondary); /* Dark petrol blue */
+  font-style: italic;
+}
+
+strong, b {
+  color: var(--tertiary); /* Dusty pink */
+  font-weight: bold;
+}
+
+

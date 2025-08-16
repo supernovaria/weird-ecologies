@@ -44,5 +44,5 @@ By Guyenet, S. J. (2017). <span style="font-style: italic">The hungry brain: ou
 
 
 <div style="text-align: center; margin: 100px 0;">
-  <a href="/Notes/Weird-Ecologies-2" class="start-button">Part 2</a>
+  <a href="/" class="start-button">Home</a>
 </div>
